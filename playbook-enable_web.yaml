@@ -1,5 +1,5 @@
 - name: Zakazanie internetu (okrem systemu moodle)
-  hosts: f135
+  hosts: f135, f137
   remote_user: root
   tasks:
     - name: Run iptables

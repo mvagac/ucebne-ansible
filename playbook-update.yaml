@@ -1,5 +1,5 @@
 - name: Debian update and upgrade
-  hosts: f135
+  hosts: f135, f137
   tasks:
    - name: Ping hosts
      ansible.builtin.ping:
