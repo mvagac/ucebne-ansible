@@ -1,0 +1,8 @@
+- name: Zakazanie internetu (okrem systemu moodle)
+  hosts: f135
+  remote_user: root
+  tasks:
+    - name: Run iptables
+      ansible.builtin.script:
+        cmd: files/iptables-enable_web.sh
+

@@ -1,0 +1,27 @@
+- name: Nainstaluj Angular nastroje na vyvoj
+  hosts: f135
+  remote_user: root
+  tasks:
+    - name: Install NodeJS
+      ansible.builtin.apt:
+        name: npm
+    - name: Install Angular (version for nodejs 12.22)
+      ansible.builtin.shell: npm install -g @angular/cli@13.3.0
+    - name: Remove old WebStorm files
+      ansible.builtin.file:
+        path: /opt/webstorm
+        state: absent
+    - name: Copy and extract new WebStorm
+      ansible.builtin.unarchive:
+        src: files/WebStorm-2022.3.1.tar.gz
+        dest: /opt/
+    - name: Create symlink
+      ansible.builtin.file:
+        src: /opt/WebStorm-223.8214.51
+        dest: /opt/webstorm
+        state: link
+    - name: Copy WebStorm desktop file
+      ansible.builtin.copy:
+        src: files/jetbrains-webstorm.desktop
+        dest: /usr/share/applications/
+

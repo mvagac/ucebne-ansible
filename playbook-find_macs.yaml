@@ -1,0 +1,12 @@
+- name: Zisti MAC adresy pocitacov v danej sieti
+  hosts: f135
+  remote_user: root
+  tasks:
+    - name: Get MAC address
+      ansible.builtin.shell: ip a | grep "link/ether"
+      register: command_output
+    - name: Display MAC address
+      ansible.builtin.debug:
+        msg: '{{ command_output.stdout }}'
+
+

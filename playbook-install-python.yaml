@@ -1,0 +1,32 @@
+- name: Nainstaluj Python nastroje na vyvoj
+  hosts: f135
+  remote_user: root
+  tasks:
+    - name: Install Python3 (numpy)
+      ansible.builtin.apt:
+        update_cache: yes
+        pkg:
+        - python3-numpy
+        - python3-pil
+        - python3-matplotlib
+        - python3-sdl2
+        - python3-opengl
+        - python3-opencv
+    - name: Remove old PyCharm files
+      ansible.builtin.file:
+        path: /opt/pycharm
+        state: absent
+    - name: Copy and extract new PyCharm
+      ansible.builtin.unarchive:
+        src: files/pycharm-community-2022.3.1.tar.gz
+        dest: /opt/
+    - name: Create symlink
+      ansible.builtin.file:
+        src: /opt/pycharm-community-2022.3.1
+        dest: /opt/pycharm
+        state: link
+    - name: Copy PyCharm desktop file
+      ansible.builtin.copy:
+        src: files/jetbrains-pycharm.desktop
+        dest: /usr/share/applications/
+

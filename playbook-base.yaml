@@ -1,0 +1,11 @@
+- name: Nainstaluj zakladne balicky ako vim, mc, ...
+  hosts: f135
+  remote_user: root
+  tasks:
+    - name: Install vim
+      ansible.builtin.apt:
+        name: vim
+    - name: Install mc
+      ansible.builtin.apt:
+        name: mc
+

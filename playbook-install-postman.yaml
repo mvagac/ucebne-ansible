@@ -1,0 +1,13 @@
+- name: Nainstaluj Postman
+  hosts: f135
+  remote_user: root
+  tasks:
+    - name: Copy and extract Postman
+      ansible.builtin.unarchive:
+        src: files/postman-linux-x64.tar.gz
+        dest: /opt/
+    - name: Copy Postman desktop file
+      ansible.builtin.copy:
+        src: files/postman.desktop
+        dest: /usr/share/applications/
+

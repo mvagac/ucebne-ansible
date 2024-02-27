@@ -1,0 +1,12 @@
+- name: Nainstaluj zakladne balicky ako vim, mc, ...
+  hosts: f135
+  remote_user: root
+  tasks:
+    - name: Install vim, mc, ...
+      ansible.builtin.apt:
+        update_cache: yes
+        pkg:
+        - vim
+        - mc
+    - name: Increase limit for number of file watchers
+      ansible.builtin.shell: echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=IntelliJ WebStorm
+Icon=/opt/webstorm/bin/webstorm.svg
+Exec="/opt/webstorm/bin/webstorm.sh" %f
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=jetbrains-webstorm

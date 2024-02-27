@@ -1,0 +1,7 @@
+- name: Vypnutie pocitacov
+  hosts: f135
+  remote_user: root
+  tasks:
+    - name: Shutdown
+      community.general.shutdown:
+

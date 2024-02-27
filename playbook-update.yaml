@@ -1,0 +1,15 @@
+- name: Debian update and upgrade
+  hosts: f135
+  tasks:
+   - name: Ping hosts
+     ansible.builtin.ping:
+   - name: Run the equivalent of "apt-get update"
+     ansible.builtin.apt:
+       update_cache: yes
+   - name: Run the equivalent of "apt-get upgrade"
+     ansible.builtin.apt:
+       upgrade: safe
+   - name: Print message
+     ansible.builtin.debug:
+       msg: Hello world
+

@@ -1,0 +1,6 @@
+- name: Pridaj aktualne prihlaseneho pouzivatela do docker skupiny
+  hosts: f135
+  remote_user: root
+  tasks:
+    - name: Add logged-in user to docker group
+      ansible.builtin.shell: STUDENT=$(who |grep -v root |awk '{print $1}') && usermod -aG docker $STUDENT
