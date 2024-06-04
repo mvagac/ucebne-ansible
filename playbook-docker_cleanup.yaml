@@ -1,0 +1,16 @@
+- name: Povymazuvaj docker veci (images, containers, volumes)
+  hosts: f135
+  remote_user: root
+  tasks:
+    - name: Stop all the Docker containers
+      ansible.builtin.shell: docker stop $(docker ps -aq)
+#    - name: Remove all the Docker containers
+#      ansible.builtin.shell: docker rm $(docker ps -aq)
+#    - name: Remove all the Docker images
+#      ansible.builtin.shell: docker rmi $(docker images -q)
+    - name: Remove all the Docker containers
+      ansible.builtin.shell: docker container prune -f
+    - name: Remove all the Docker volumes
+      ansible.builtin.shell: docker volume prune -f
+    - name: Remove all the Docker images
+      ansible.builtin.shell: docker image prune -a -f

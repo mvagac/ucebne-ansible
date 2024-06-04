@@ -1,0 +1,12 @@
+- name: Nainstaluj Visual Code nastroj na vyvoj
+  hosts: f135
+  remote_user: root
+  tasks:
+    - name: Copy Visual Code deb file
+      ansible.builtin.copy:
+        src: files/code_1.78.2-1683731010_amd64.deb
+        dest: /tmp/
+    - name: Install Visual Code from the internet
+      ansible.builtin.apt:
+        deb: /tmp/code_1.78.2-1683731010_amd64.deb
+

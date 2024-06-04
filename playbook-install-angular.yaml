@@ -2,11 +2,14 @@
   hosts: f135, f137
   remote_user: root
   tasks:
-    - name: Install NodeJS
-      ansible.builtin.apt:
-        name: npm
-    - name: Install Angular (version for nodejs 12.22)
-      ansible.builtin.shell: npm install -g @angular/cli@13.3.0
+    - name: Run NVM install
+      ansible.builtin.script:
+        cmd: files/install-nvm.sh
+#    - name: Install NodeJS
+#      ansible.builtin.apt:
+#        name: npm
+#    - name: Install Angular (version for nodejs 12.22)
+#      ansible.builtin.shell: npm install -g @angular/cli@13.3.0
     - name: Remove old WebStorm files
       ansible.builtin.file:
         path: /opt/webstorm

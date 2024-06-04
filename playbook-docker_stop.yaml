@@ -1,0 +1,6 @@
+- name: Pozastavuj docker kontajneri
+  hosts: f135
+  remote_user: root
+  tasks:
+    - name: Stop all the Docker containers
+      ansible.builtin.shell: docker stop $(docker ps -aq)

@@ -1,10 +1,13 @@
 - name: Nainstaluj Java nastroje na vyvoj
-  hosts: f135, f137
+  hosts: f135
   remote_user: root
   tasks:
     - name: Install JDK17
       ansible.builtin.apt:
         name: openjdk-17-jdk
+    - name: Install Maven
+      ansible.builtin.apt:
+        name: maven
     - name: Remove old Idea files
       ansible.builtin.file:
         path: /opt/idea
@@ -22,4 +25,7 @@
       ansible.builtin.copy:
         src: files/jetbrains-idea.desktop
         dest: /usr/share/applications/
+    - name: Install DBeaver from the internet
+      ansible.builtin.apt:
+        deb: https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
 

@@ -10,14 +10,19 @@ fi
 
 UCEBNA=$1
 
+IFACE=$(ip a | grep enp | head -1 | cut -d":" -f2)
+IPADDR=$(ip addr show $IFACE | grep "inet " | awk '{print $2}')
+IPPARTS=(${IPADDR//./ })
+NETADDR="${IPPARTS[0]}.${IPPARTS[1]}.${IPPARTS[2]}.0/24"
+
 if [ $UCEBNA == "f135" ]
 then
-	IPCKY=$(netdiscover -r 194.160.41.0/24 -P | grep "Micro-Star" | awk '{ print $1 }')
+	IPCKY=$(netdiscover -r $NETADDR -P | grep "Micro-Star" | awk '{ print $1 }')
 fi
 
 if [ $UCEBNA == "f137" ]
 then
-	IPCKY=$(netdiscover -r 192.168.36.0/24 -P | grep "ASRock Incorporation" | awk '{ print $1 }')
+	IPCKY=$(netdiscover -r $NETADDR -P | grep "ASRock Incorporation" | awk '{ print $1 }')
 fi
 
 {

@@ -1,0 +1,12 @@
+- name: Skontroluj volne miesto pocitacov v danej sieti
+  hosts: f135
+  remote_user: root
+  tasks:
+    - name: Get disk free info
+      ansible.builtin.shell: df -h | grep "/dev/nvme" | grep -v efi
+      register: command_output
+    - name: Display disk free info
+      ansible.builtin.debug:
+        msg: '{{ command_output.stdout }}'
+
+

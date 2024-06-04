@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Arduino IDE
+Exec="/opt/arduino/arduino-ide" %f
+Categories=Development;IDE;
+Terminal=false

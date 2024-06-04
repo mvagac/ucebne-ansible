@@ -1,0 +1,15 @@
+- name: Zisti ip adresy a nazvy pocitacov v sieti
+  hosts: f135
+  remote_user: root
+  tasks:
+    - name: Get hostname
+      ansible.builtin.shell: /usr/bin/hostname
+      register: hostname
+    - name: Get IP address
+      ansible.builtin.shell: ip a | grep 194.160 |awk '{ print $2}'
+      register: ip_addr
+    - name: Display disk free info
+      ansible.builtin.debug:
+        msg: '{{ hostname.stdout }} => {{ ip_addr.stdout }}'
+
+

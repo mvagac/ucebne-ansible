@@ -1,0 +1,40 @@
+- name: Nainstaluj Arduino prostredie
+  hosts: f135
+  remote_user: root
+  tasks:
+    - name: Install avra
+      ansible.builtin.apt:
+        update_cache: yes
+        pkg:
+        - avra
+    - name: Remove old Arduino files
+      ansible.builtin.file:
+        path: /opt/arduino
+        state: absent
+    - name: Create directory for Arduino
+      ansible.builtin.file:
+        path: /opt/arduino
+        state: directory
+        mode: '0755'
+    - name: Copy and extract Arduino IDE
+      ansible.builtin.unarchive:
+        src: files/arduino-ide_2.1.0_Linux_64bit.zip
+        dest: /opt/arduino/
+    - name: Copy Arduino desktop file
+      ansible.builtin.copy:
+        src: files/arduino.desktop
+        dest: /usr/share/applications/
+    - name: Add INkruzok user to dialout group
+      ansible.builtin.shell: |
+        usermod -aG dialout INkruzok
+        usermod -aG dialout inkruzok1
+        usermod -aG dialout inkruzok2
+        usermod -aG dialout inkruzok3
+        usermod -aG dialout inkruzok4
+        usermod -aG dialout inkruzok5
+        usermod -aG dialout inkruzok6
+        usermod -aG dialout inkruzok7
+        usermod -aG dialout inkruzok8
+        usermod -aG dialout inkruzok9
+        usermod -aG dialout inkruzok10
+
