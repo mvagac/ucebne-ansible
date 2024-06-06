@@ -1,5 +1,5 @@
 - name: Nainstaluj Visual Code nastroj na vyvoj
-  hosts: f135
+  hosts: f135, f137
   remote_user: root
   tasks:
     - name: Copy Visual Code deb file

@@ -1,5 +1,5 @@
 - name: Pozastavuj docker kontajneri
-  hosts: f135
+  hosts: f135, f137
   remote_user: root
   tasks:
     - name: Stop all the Docker containers

@@ -1,5 +1,5 @@
 - name: Nainstaluj Arduino prostredie
-  hosts: f135
+  hosts: f135, f137
   remote_user: root
   tasks:
     - name: Install avra

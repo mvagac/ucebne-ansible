@@ -1,5 +1,5 @@
 - name: Skontroluj volne miesto pocitacov v danej sieti
-  hosts: f135
+  hosts: f135, f137
   remote_user: root
   tasks:
     - name: Get disk free info
