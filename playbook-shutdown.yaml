@@ -2,6 +2,8 @@
   hosts: f135, f137
   remote_user: root
   tasks:
+    #- name: Reboot
+    #  ansible.builtin.reboot:
     - name: Shutdown
       community.general.shutdown:
 
