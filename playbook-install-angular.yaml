@@ -16,11 +16,11 @@
         state: absent
     - name: Copy and extract new WebStorm
       ansible.builtin.unarchive:
-        src: files/WebStorm-2022.3.1.tar.gz
+        src: files/WebStorm-2024.2.1.tar.gz
         dest: /opt/
     - name: Create symlink
       ansible.builtin.file:
-        src: /opt/WebStorm-223.8214.51
+        src: /opt/WebStorm-242.21829.149
         dest: /opt/webstorm
         state: link
     - name: Copy WebStorm desktop file

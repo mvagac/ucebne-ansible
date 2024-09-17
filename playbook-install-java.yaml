@@ -14,11 +14,11 @@
         state: absent
     - name: Copy and extract new Idea
       ansible.builtin.unarchive:
-        src: files/ideaIC-2022.3.1.tar.gz
+        src: files/ideaIC-2024.1.2.tar.gz
         dest: /opt/
     - name: Create symlink
       ansible.builtin.file:
-        src: /opt/idea-IC-223.8214.52
+        src: /opt/idea-IC-241.17011.79
         dest: /opt/idea
         state: link
     - name: Copy Idea desktop file
