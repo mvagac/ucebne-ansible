@@ -23,11 +23,11 @@
         state: absent
     - name: Copy and extract new PyCharm
       ansible.builtin.unarchive:
-        src: files/pycharm-community-2022.3.1.tar.gz
+        src: files/pycharm-community-2024.2.1.tar.gz
         dest: /opt/
     - name: Create symlink
       ansible.builtin.file:
-        src: /opt/pycharm-community-2022.3.1
+        src: /opt/pycharm-community-2024.2.1
         dest: /opt/pycharm
         state: link
     - name: Copy PyCharm desktop file
