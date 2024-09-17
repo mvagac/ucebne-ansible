@@ -13,7 +13,8 @@
       ansible.builtin.shell: df -h | grep "/dev/nvme" | grep -v efi
       register: df_output
     - name: Get disk type
-      ansible.builtin.shell: POM=$(lsscsi) && echo ${POM:17:30}
+      ansible.builtin.shell: lsscsi
+      #ansible.builtin.shell: POM=$(lsscsi) && echo ${POM:17:30}
       register: lsscsi_output
     - name: Display disk free info
       ansible.builtin.debug:
