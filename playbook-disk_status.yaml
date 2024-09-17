@@ -1,0 +1,22 @@
+- name: Skontroluj volne miesto pocitacov v danej sieti
+  hosts: f135, f137
+  remote_user: root
+  tasks:
+    - name: Install monitoring tools
+      ansible.builtin.apt:
+        update_cache: yes
+        pkg:
+        - sysstat
+        - lsscsi
+        - smartmontools
+    - name: Get disk free info
+      ansible.builtin.shell: df -h | grep "/dev/nvme" | grep -v efi
+      register: df_output
+    - name: Get disk type
+      ansible.builtin.shell: POM=$(lsscsi) && echo ${POM:17:30}
+      register: lsscsi_output
+    - name: Display disk free info
+      ansible.builtin.debug:
+        msg: '{{ df_output.stdout }}, {{ lsscsi_output.stdout }}'
+
+
