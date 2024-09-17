@@ -1,0 +1,17 @@
+- name: Rozne pomocne...
+  hosts: f135, f137
+  remote_user: root
+  tasks:
+    - name: Remove old PyCharm files
+      ansible.builtin.file:
+        path: /opt/pycharm-community-2022.3.1
+        state: absent
+    - name: Remove old Idea files
+      ansible.builtin.file:
+        path: /opt/idea-IC-223.8214.52
+        state: absent
+    - name: Remove old WebStorm files
+      ansible.builtin.file:
+        path: /opt/WebStorm-223.8214.51
+        state: absent
+
