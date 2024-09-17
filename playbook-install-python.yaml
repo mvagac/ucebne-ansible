@@ -15,8 +15,6 @@
         - python3-opencv
         - python3-pygame
         - python3-serial
-    - name: Install pynput package
-      ansible.builtin.shell: pip3 install pynput
     - name: Remove old PyCharm files
       ansible.builtin.file:
         path: /opt/pycharm
