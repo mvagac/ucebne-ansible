@@ -23,6 +23,8 @@ mkdir /opt/nvm/alias
 chmod 777 /opt/nvm/alias
 mkdir /opt/nvm/.cache
 chmod 777 /opt/nvm/.cache
+mkdir /opt/nvm/.cache/bin
+chmod 777 /opt/nvm/.cache/bin
 mkdir /opt/nvm/versions
 chmod 777 /opt/nvm/versions
 mkdir /opt/nvm/versions/node
